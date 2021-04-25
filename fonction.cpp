@@ -1,5 +1,5 @@
 #include <iostream>
 
-int main(){
+int fonction(){
     return 0;
 }
