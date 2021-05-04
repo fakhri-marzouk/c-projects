@@ -5,16 +5,16 @@ class commande
 protected :
     int numCommande ;
     date dateCommande;
-    float total ;
+    int qte;
     vector<medicament*> tab ;
 public :
       commande(int=0 );
       commande(const commande &);
       void setNumCo(int a){numCommande=a ;}
       int getNumCo(){return numCommande;}
-      void ajouterCommande(medicament&);
-      float calculerTotal(medicament& ) ;
-      void consulterMedicament(medicament&) ;
+      void ajouterCommande();///doit etre une fonction amie à la classe medicament et on doit ajouter la la fonction rechercheMed à la classe med
+      float calculerTotal() ;
+      //void consulterCommande(medicament&) ;
       void afficherCommande() ;
       void annulerMedicament(medicament) ;
 
@@ -24,34 +24,40 @@ public :
 
      class achat
      {
-         string nomCommercial;
-         float prixAchat ;
+         medicament medAchat ;
          int qte ;
-         vector<medicament *> ;
+         vector<medicament*> tab1;
          date dateAchat ;
      public :
-         achat(string=0 , float=0.0 , int=0 , date ) ;
+         achat(medicament ,  int=0) ;
+         achat(const &)
          void saisirAchat() ;
          float calculachat();
-         void afficheAchat() ;
+         float rechercherPA() ;
+         //void afficheAchat() ;
+         friend operator& operator<<(ostream& , achat const & ) ;
+          friend operator& operator>>(istream& , achat const & );
          ~achat(void);
 
 
      };
-     class medicament
-     {
-         string nomChimique ;
-         string nomCommercial ;
+      ostream& operator<<(ostream& out , achat const & a)
+      {   for (int i=0 ; i<a.tab1.size();i++)
+      {
+          out<<a.medAchat <<endl;
 
-     public :
-         medicament(string , string ) ;
+      }
+      return out ;
 
-         friend ostream& operator<<(ostream& , medicament&) ;
-         friend istream& operator>>(istream& , medicament& );
-         friend float calculerTotal(medicament& );
-     };
+      }
+      istream& operator<<(istream& in , achat const & a)
+      {   for (int i=0 ; i<a.tab1.size();i++)
+      {
+          in<<a.medAchat <<endl;
 
+      }
+      return in ;
 
-
+      }
 
 #endif // BIB_H_INCLUDED
