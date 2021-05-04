@@ -1,0 +1,1 @@
+dicament med(1,"ff","oo",55,0) ;
