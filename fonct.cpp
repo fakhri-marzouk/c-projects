@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "iostream"
 #include"string"
 #include"ostream"
@@ -8,6 +9,21 @@
 /////////////////// commande///////////////////
 using namespace std;
 
+=======
+#include <iostream>
+#include<string>
+#include<ostream>
+#include<istream>
+#include"bib.h"
+
+
+using namespace std;
+medicament::medicament(string nomCh , string nomCo)
+{
+    nomChimique=nomCh;
+    nomCommercial=nmCo ;
+}
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
 commande::commande(int a)
 {
     numCommande=a ;
@@ -16,6 +32,7 @@ void commande::ajouterCommande()
 
 {
     string rep ;
+<<<<<<< HEAD
     cout<<"voulez vous passer une commande 1\oui   2\non"<<endl;
     cin>>rep ;
     switch( 'rep' )
@@ -47,17 +64,38 @@ case 'oui':
 
         tab.push_back(med);
     } break;
+=======
+    cout<<"voulez vous ajouter un medicament au commande 1\oui   2\non"<<endl;
+    cin>>rep ;
+    switch(rep )
+    {
+
+
+case "oui":
+    {
+
+        medicament *q =new medicament ;   //saisie medicament
+        cout<<"donner le medicament"<< endl;
+        cin>>*q ;
+        tab.push_back(q);
+    }
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
 case "non" :
     {
         cout<<" OK! "<<endl;
     }
 
+<<<<<<< HEAD
     } break ;
     default cout<<" s'il vous plaît , limitze vous sur noter choix /n voulez vous passer une comande 1)oui /n 1git status)non"<< endl;
+=======
+    }
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
 }
 float commande::calculerTotal(medicament &med )
 {
 
+<<<<<<< HEAD
      float somme=0.0 ;
     for (int i=0 , i<tab.size() ; i++)
     {
@@ -105,6 +143,21 @@ achat::achat(const & achat A)
                medicament * q=new medicament(*A.tab1[i]);
                 tab1.push_back(q);
             }
+=======
+
+    for (int i=0 , i<nbr ; i++)
+    {
+
+    }
+
+    cin>>med ;
+    float s=0 ;
+
+
+}
+achat::achat(string ch , float f ,int a )
+{
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
 
 }
 void achat::saisirAchat()
@@ -113,6 +166,7 @@ void achat::saisirAchat()
     cin>>rep ;
     switch(rep)
     {
+<<<<<<< HEAD
         case "oui":
      {
             achat a ;
@@ -138,4 +192,23 @@ float achat::calculachat()
 
      }
      cout<<" le total de l'achat est "<< s ;
+=======
+        case (oui)
+        {
+            cout<<"donner le nom commercial , le prix d'achat et la quantite que vous voulez l'acheter "<<endl;
+            cin>>nomCommercial ;
+            cin>>prixAchat ;
+            cin>>qte;
+}
+        }
+    }
+      case (non)
+      {
+          cout<<"OK! " <<endl ;
+      }
+}
+float achat::calculachat()
+{
+
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
 }
