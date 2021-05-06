@@ -21,3 +21,16 @@ void date :: afficher()
 
     cout<<jour<<"/"<<mois<<"/"<<annee<<endl ;
 }
+ostream& operator<<(ostream& out , date& d)
+{
+    out<<"\n jour: "<<d.jour ;
+    out<<"\n mois : "<<d.mois ;
+    out<<"\n anne : "<<d.annee ;
+
+}
+istream& operator>>(istream& in , date& d)
+{
+    in>>d.jour ;
+    in>>d.mois ;
+    in>>d.annee ;
+}

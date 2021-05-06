@@ -1,8 +1,9 @@
 #include<iostream>
 using namespace std ;
-#include"medicament.h"
+#include"medicament.h" 
 #include"date.h" 
-void medicament::saisir()
+#include<string>
+void medicament::saisirMedicament()
 {
     int j1 ; int j2 ;int m1 ; int m2 ; int a1 ; int a2 ;
     cout<<"\n saisir un medicament"<<endl ;
@@ -60,6 +61,7 @@ ostream& operator<< (ostream& out , medicament& med)
     out<<"\n prix vente: "<<med.prixVente ;
     out<<"\n prix achat: "<<med.prixAchat ;
     out<<"\n stock: "<<med.stock ;
+    // out<<"\n date Creation"<<med.date_Creation 
    
     return out ;
 }

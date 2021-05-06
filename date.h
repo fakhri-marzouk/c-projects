@@ -9,5 +9,4 @@ class date {
     int getJour(){return jour ;}
     int getMois(){return mois ;}
     int getAnnee(){return annee ;}
-    ostream
 };

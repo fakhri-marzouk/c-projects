@@ -1,6 +1,8 @@
-#include<string.h>
 #include<vector> 
 #include"date.h"
+#include <ostream>
+#include <istream>
+#include <string>
 class medicament {
     protected :
     int reference ;
@@ -13,7 +15,7 @@ class medicament {
     date date_Fin ;
     public :
     int getReference(){ return reference ;} 
-    string getNom() {return nomCommercial ;} 
+    string getNom() { return nomCommercial ;} 
     float getPrix() { return prixAchat ;} 
     string getType(){ return type ;} 
     void setReference(int r) { reference=r ; } 
@@ -25,7 +27,7 @@ class medicament {
     float calcul_prixVente() ;
     medicament(int=0 ,string="" ,string="", float=0,int=0,int=0,int=0,int=0,int=0,int=0,int=0) ;
     void afficherMedicament() ; 
-    void saisir() ;
-    friend ostream& operator<<(ostream&, medicament& ) ;
-    friend istream& operator>>(istream&,medicament& ) ;   // cin et cout  
+    void saisirMedicament() ;
+    friend ostream& operator<<(ostream&, medicament&) ;
+    friend istream& operator>>(istream&,medicament&) ;   // cin et cout  
 };
