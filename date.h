@@ -8,13 +8,17 @@ class date {
     int mois ;
     int annee ;
     public :
-    date(int,int ,int ) ;
+    date(int=0,int=0 ,int=0 ) ;
     void saisir() ;
     void afficher() ;
     void setJour(int j){this->jour=j;}
     void setMois(int m){this->mois=m;}
     void setAnnee(int a){this->annee=a;}
+    int getJour(){return jour ;}
+    int getMois(){return mois ;}
+    int getAnnee(){return annee ;}
     date local_date();
+
 };
 
 date :: date (int j=0,int m=0 , int a=0 )

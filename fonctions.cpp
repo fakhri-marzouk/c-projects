@@ -1,37 +1,75 @@
-#include<string>
 #include<iostream>
-#include<vector>
 using namespace std ;
 #include"medicament.h"
-#include"date.h"
-void medicament :: calcul_prixVente()
+#include"date.h" 
+void medicament::saisir()
 {
-    float prixVente ;
-    prixVente=prixAchat+((prixAchat*7)/100) ;
-
+    int j1 ; int j2 ;int m1 ; int m2 ; int a1 ; int a2 ;
+    cout<<"\n saisir un medicament"<<endl ;
+        cin>>type ;
+        cin>>reference ;
+        cin>>nomCommercial ;
+        cin>>prixAchat ;
+        cin>>stock ;
+        cout<<"date de creation:"<<endl ;
+        cin>>j1 ;
+        cin>>m1 ;
+        cin>>a1 ;
+        date date_Creation(j1,m1,a1) ;
+        cout<<"date expiration : "<<endl ;
+        cin>>j2 ;
+        cin>>m2 ;
+        cin>>a2 ;
+        date date_Fin(j2,m2,a2) ;
 }
-medicament :: medicament(int r ,string t, string n , float pa , int s)
+medicament :: medicament(int r ,string t, string n , float pa , int s,int j1,int m1 , int a1, int j2 , int m2 , int a2)
 {
     reference=r ;
-    type=t;
+    type=t ;
     nomCommercial=n ;
     prixAchat=pa ;
     stock=s ;
-    calcul_prixVente() ;
-    date_Creation.saisir() ;
-    date_Fin.saisir() ;
+    prixVente=calcul_prixVente() ;
+    date date_Creation(j1,m1,a1) ;
+    date date_Fin(j2,m2,a2) ;
 }
-void medicament :: afficher()
+float medicament :: calcul_prixVente()
+{
+    float prixVente ;
+    prixVente=prixAchat+((prixAchat*7)/100) ;
+    return prixVente ;
+}
+void medicament :: afficherMedicament()
 {
     cout<<"la reference est :"<<reference<<endl ;
     cout<<"le type est :"<<type<<endl ;
     cout<<"le nom commercial :"<<nomCommercial<<endl ;
     cout<<"le stock est :"<<stock<<endl ;
-    cout<<"le prix est :"<<prixVente ;
+    cout<<"le prix est :"<<prixVente<<endl ;
+    cout<<"date de creation :";
     date_Creation.afficher() ;
+    cout<<endl<<"date d'expiration";
     date_Fin.afficher() ;
-}
-medicament::~medicament()
-{
 
+}
+ostream& operator<< (ostream& out , medicament& med)
+{
+    out<<"\n réference :"<<med.reference ;
+    out<<"\n Type : "<<med.type ;
+    out<<"\n nom Commercial:"<<med.nomCommercial ;
+    out<<"\n prix vente: "<<med.prixVente ;
+    out<<"\n prix achat: "<<med.prixAchat ;
+    out<<"\n stock: "<<med.stock ;
+   
+    return out ;
+}
+istream& operator>>(istream& in, medicament& med)
+{
+    in>>med.reference ;
+    in>>med.type ;
+    in>>med.nomCommercial ;
+    in>>med.prixVente ;
+    in>>med.prixAchat ;
+    in>>med.stock ;
+    return in ; 
 }

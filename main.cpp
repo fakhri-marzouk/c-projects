@@ -1,6 +1,12 @@
 #include "comptes.h"
 #include "date.h"
 #include "monnais.h"
+#include <iostream>
+#include<string>
+#include<iostream>
+#include"bib.h"
+
+using namespace std;
 
 int main(){
     comptes tabComptes;
@@ -163,3 +169,4 @@ int main(){
     }
     return 0;
 }
+

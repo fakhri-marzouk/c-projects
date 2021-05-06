@@ -4,7 +4,8 @@ using namespace std ;
 #include"medicament.h"
 int main()
 {
-    medicament med(1,"ff","oo",55,0) ;
-    med.afficher() ;
+    medicament med ;
+    med.saisir() ;
+    med.afficherMedicament() ;
     return 0 ;
 }
