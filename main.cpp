@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+#include <iostream>
+#include<string>
+#include<ostream>
+#include<istream>
+#include"bib.h"
+
+
+using namespace std;
+
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+=======
 #include"comptes.h"
 
 int main(){
@@ -97,3 +113,4 @@ int main(){
     }
     return 0;
 }
+>>>>>>> c1ede030fed757e67ea4ccaa0ecb02338509f3c2
