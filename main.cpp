@@ -1,20 +1,21 @@
-#include"comptes.h"
+#include "comptes.h"
+#include "date.h"
+#include "monnais.h"
 
 int main(){
     comptes tabComptes;
     personnes tabPersonnes;
     personne p;
     compte c;
+    int choix=-1;
     while(1){
         bool loggedIn=0;
         cout<<"voulez-vous s'authentifier ou créer un compte?"<<endl;
         cout<<"1 : s'authentifier"<<endl;
         cout<<"2 : créer un compte"<<endl;
         cout<<"Votre choix : ";
-        int choix;
         cin>> choix;
         system("pause<0");
-        
         switch (choix){
         case 1:{
             cout<<"Authentification : "<<endl;
@@ -76,13 +77,78 @@ int main(){
         if(loggedIn){
             if (p.getType()=="client"){
                 //affichage pour client
+                cout<<"bonjour cher client "<<p.getNom()<<endl;
+                
 
             }else if(p.getType()=="fournisseur"){
                 //affichage pour fournisseur
 
             }else if(p.getType()=="employe"){
                 //affichage pour employe
+                cout<<"Bonjour employé "<<p.getNom()<<' '<<p.getPrenom()<<endl<<endl;
+                cout<<"Opération à executer"<<endl;
+                cout<<"1 : opération d'inventaire de médicaments"<<endl;
+                cout<<"2 : opération monétaire"<<endl;
+                cout<<"3 : opération de vente"<<endl;
+                cout<<"4 : opération de restock"<<endl;
+                cout<<"5 : déconnecter"<<endl;
+                cout<<"Votre choix : ";
+                cin>>choix;
+                switch (choix)
+                {
+                case 1:{//inventaire de medicament
 
+                    break;
+                }
+                case 2:{//caisse monnais
+                        monnais m;
+                        int choix=-1;
+                        cout<<"gestion de caisse : "<<endl;
+                        cout<<"1 : ajouter un montant"<<endl;
+                        cout<<"2 : retirer un montant"<<endl;
+                        cout<<"3 : afficher la somme actuelle"<<endl;
+                        cout<<"4 : allez au main menu"<<endl;
+                        cout<<"Votre choix";
+                        cin>>choix;
+                        switch (choix)
+                        {
+                        case 1:{
+                            m.ajouterMontant();
+                            break;
+                        }
+                        case 2:{
+                            m.retirerMontant();
+                            break;
+                        }  
+                        case 3:{
+                            cout<<m;
+                            break;
+                        }
+                        case 4:{
+                            break;
+                        }
+                        default:
+                            cout<<"choix non valide";
+                            break;
+                        }
+                    break;
+                }
+                case 3:{
+                    
+                    break;
+                }
+                case 4:{
+                    
+                    break;
+                }
+                case 5:{
+                    
+                    break;
+                }
+                default:
+                    cout<<"choix invalide"<<endl;
+                    break;
+                }
             }else if(p.getType()=="gerant"){
                 //affichage pour gerant
 
