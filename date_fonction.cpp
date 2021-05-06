@@ -1,5 +1,5 @@
 #include<iostream>
-using namsepace std ;
+using namespace std ;
 #include"date.h"
 date :: date (int j,int m , int a )
 {
@@ -16,7 +16,8 @@ void date :: saisir()
     cout<<"\n donner l'annee"<<endl ;
     cin>>annee ;
 }
-void date :: afficher(msg)
+void date :: afficher()
 {
+
     cout<<jour<<"/"<<mois<<"/"<<annee<<endl ;
 }

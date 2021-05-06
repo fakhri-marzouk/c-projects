@@ -3,8 +3,11 @@ class date {
     int mois ;
     int annee ;
     public :
-    date(int,int ,int ) ;
+    date(int=0,int=0 ,int=0 ) ;
     void saisir() ;
-    ~date (void) ;
-    void afficher(string="") ;
+    void afficher() ;
+    int getJour(){return jour ;}
+    int getMois(){return mois ;}
+    int getAnnee(){return annee ;}
+    ostream
 };

@@ -8,8 +8,8 @@ class stockMed{
     stockMed(const stockMed& );
     void ajouter(medicament, int=0) ;
     void supprimer(int=0) ;
-    bool chercher_nom(medicament) ;
-    bool chercher_ref(medicament) ;
+    bool chercher_nom(string ) ;
+    bool chercher_ref(int ) ;
     int taille () {return tab.size();}
     void afficher() ;
     ~stockMed(void) ;
