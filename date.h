@@ -1,33 +1,30 @@
-#include <string>
 #include<iostream>
-#include <ctime>
-using namespace std ;
-
+#include<ostream>
+#include<istream>
 class date {
+    public: 
     int jour ;
     int mois ;
     int annee ;
     public :
     date(int=0,int=0 ,int=0 ) ;
-    void saisir() ;
-    void afficher() ;
-    void setJour(int j){this->jour=j;}
-    void setMois(int m){this->mois=m;}
-    void setAnnee(int a){this->annee=a;}
+    void saisirDate() ;
+    void afficherDate() ;
+    // ostream& operator<< (ostream&,date& );
+    //istream& operator>> (istream&,date& ) ;
     int getJour(){return jour ;}
     int getMois(){return mois ;}
     int getAnnee(){return annee ;}
-    date local_date();
-
+    
 };
 
-date :: date (int j=0,int m=0 , int a=0 )
+date :: date (int j,int m , int a )
 {
         jour=j ;
         mois=m ;
         annee=a ;
 }
-void date :: saisir()
+void date :: saisirDate()
 {
     cout<<"donner le jour"<<endl ;
     cin>>jour ; 
@@ -36,28 +33,21 @@ void date :: saisir()
     cout<<"\n donner l'annee"<<endl ;
     cin>>annee ;
 }
-void date :: afficher()
+void date :: afficherDate()
 {
+    cout<<"affichage date "<<endl ;
     cout<<jour<<"/"<<mois<<"/"<<annee<<endl ;
 }
-
-date date::local_date() {
-    time_t now = time(0);
-    char* dt = ctime(&now);
-    tm *gmtm = gmtime(&now);
-    dt = asctime(gmtm);
-    this->setJour(gmtm->tm_mday);
-    this->setMois(gmtm->tm_mon+1);
-    this->setAnnee(gmtm->tm_year+1900);
-    return *this;
-}
-
-void local_time()
+ostream& operator<<(ostream& out , date& d)
 {
-    time_t curr_time= time(NULL);
-	tm *tm_local = localtime(&curr_time);
-	cout << "Current local time : " ;
-    cout<< tm_local->tm_hour << ":" ;
-    cout<< tm_local->tm_min << ":" ;
-    cout<< tm_local->tm_sec;
+    out<<"\n jour: "<<d.jour ;
+    out<<"\n mois : "<<d.mois ;
+    out<<"\n anne : "<<d.annee ;
+
+}
+istream& operator>>(istream& in , date& d)
+{
+    in>>d.jour ;
+    in>>d.mois ;
+    in>>d.annee ;
 }
