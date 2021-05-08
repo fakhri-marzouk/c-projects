@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1620419229 source:c:\users\asus\desktop\test c ++\testcommande\main.cpp
+	<iostream>
+	"bibCom.h"
+
+1620410389 c:\users\asus\desktop\test c ++\testcommande\bibcom.h
+	<iostream>
+	<string>
+	<ostream>
+	<istream>
+	<vector>
+	<iostream>
+
+1620434379 source:c:\users\asus\desktop\test c ++\testcommande\fonct.cpp
+	<iostream>
+	<string>
+	<ostream>
+	<istream>
+	<vector>
+	"bibCom.h"
+
