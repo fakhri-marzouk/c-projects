@@ -10,6 +10,7 @@ int main()
     fstream f ;
     stockMed::creer_fichier(f) ;
     stockMed::remplir_fichier(f) ;
+    stockMed::afficher_fichier(f) ;
     f.close() ;
     return 0 ;
 }

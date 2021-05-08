@@ -47,11 +47,10 @@ void medicament :: afficherMedicament()
     cout<<"le nom commercial :"<<nomCommercial<<endl ;
     cout<<"le stock est :"<<stock<<endl ;
     cout<<"le prix est :"<<prixVente<<endl ;
-    cout<<"date de creation :";
+    cout<<"date de creation :" ;
     date_Creation.afficherDate() ;
     cout<<endl<<"date d'expiration";
     date_Fin.afficherDate() ;
-
 }
 ostream& operator<< (ostream& out , medicament& med)
 {
@@ -59,7 +58,6 @@ ostream& operator<< (ostream& out , medicament& med)
     out<<"\n Type : "<<med.type ;
     out<<"\n nom Commercial:"<<med.nomCommercial ;
     out<<"\n prix vente: "<<med.prixVente ;
-    out<<"\n prix achat: "<<med.prixAchat ;
     out<<"\n stock: "<<med.stock ;
     out<<"\n date Creation"<<med.date_Creation ;
     out<<"\n date expiration"<<med.date_Fin ;
@@ -92,7 +90,7 @@ istream& operator>>(istream& in , stockMed& sm)
     medicament* med=new medicament() ;
     in>>*med; 
     sm.tab.push_back(med) ;
-    cout<<"ajouter ?"<<endl ;
+    cout<<"ajouter "<<endl ;
     cin>>rep ;
  }while( rep=='o' || rep=='O') ;
  return in ;
@@ -100,7 +98,7 @@ istream& operator>>(istream& in , stockMed& sm)
 ostream& operator<<(ostream& out , stockMed& sm )
 {
     for(int i=0 ; i<sm.tab.size(); i++)
-        {   
+        {  
             out<<*sm.tab[i]<<endl ;
         }
     return out ;
@@ -113,24 +111,20 @@ void stockMed ::creer_fichier(fstream& f)
 }
 void stockMed::remplir_fichier(fstream& f)
 {
-    int x ;
-    cout<<"donner le nombre de medicament (rf) "<<endl ;
-    cin>>x; 
-    for(int i=0;i<x ;i++)
-    {
-        stockMed sm ;
+
+        stockMed sm ;   
         f<<sm<<endl ;
-    }
 }
 void stockMed::afficher_fichier(fstream& f)
 {
+    char ch[100] ;
     stockMed sm ;
     f.seekg(0) ;
     while(1)
     {
-        f>>sm ;
+        f.getline(ch,100) ;
         if(f.eof()) break ;
-        cout<<sm<<endl ;
+        cout<<ch<<endl ;
     }
 }
 stockMed:: stockMed() 
@@ -166,7 +160,7 @@ stockMed:: stockMed()
         cin>>a2 ;
         med =new medicament(refer,type,nomCommercial,prixAchat, stock,j1,m1,a1,j2,m2,a2);
         tab.push_back(med) ;
-        cout<<" rajouter ? "<<endl ;
+        cout<<"rajouter ? "<<endl ;
         cin>>rep ;
     }
     while(rep=='o'|| rep=='O');
@@ -200,7 +194,6 @@ void stockMed::supprimerMed_ref(int r)
         tab.erase(tab.begin()+i) ;
     }
     }
-
 }
 void stockMed::supprimerMed_nom(string n)
 {
