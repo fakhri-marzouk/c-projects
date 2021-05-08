@@ -1,9 +1,7 @@
 #include<iostream>
 using namespace std ;
-#include"medicament.h"
-#include"stockMed.h"
-#include<vector>
-void stockMed :: ajouter(medicament med , int ind) 
+#include"medicament.h" 
+void stockMed :: ajouterMed(medicament med , int ind) 
 {
     medicament*q =new medicament(med) ;
     tab.insert(tab.begin()+ind , q) ;
@@ -49,7 +47,7 @@ stockMed::stockMed(const stockMed& w)
         tab.push_back(med) ;
     }
 }
-void stockMed::afficher()
+void stockMed::afficherStock()
 {
     for(int i=0; i<tab.size() ;i++)
         tab[i]->afficherMedicament() ;
@@ -60,7 +58,7 @@ stockMed::~stockMed()
         delete tab[i] ;
     tab.clear() ;
 }
-void stockMed::supprimer(int i)
+void stockMed::supprimerMed(int i)
 {
     delete tab[i] ;
     tab.erase(tab.begin()+i) ;
@@ -84,7 +82,7 @@ bool stockMed::chercher_ref(int r)
         else return false ;
     }
 }
-void stockMed :: ajouter(medicament med, int ind)
+void stockMed :: ajouterMed(medicament med, int ind)
 {
     medicament* q=new medicament(med) ;
     tab.insert((tab.begin()+ind) , q) ;

@@ -2,13 +2,14 @@
 #include"ostream"
 #include"istream"
 using namespace std ;
-#include"fonction.cpp"
-#include"medicament.h"
+#include"fonctions.cpp"
+#include<fstream>
 #include<string>
 int main()
 {
-    medicament med ;
-    med.saisirMedicament() ;
-    med.afficherMedicament() ;
+    fstream f ;
+    stockMed::creer_fichier(f) ;
+    stockMed::remplir_fichier(f) ;
+    f.close() ;
     return 0 ;
 }

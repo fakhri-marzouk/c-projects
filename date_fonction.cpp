@@ -7,7 +7,7 @@ date :: date (int j,int m , int a )
         mois=m ;
         annee=a ;
 }
-void date :: saisir()
+void date :: saisirDate()
 {
     cout<<"donner le jour"<<endl ;
     cin>>jour ; 
@@ -16,7 +16,7 @@ void date :: saisir()
     cout<<"\n donner l'annee"<<endl ;
     cin>>annee ;
 }
-void date :: afficher()
+void date :: afficherDate()
 {
 
     cout<<jour<<"/"<<mois<<"/"<<annee<<endl ;

@@ -25,6 +25,7 @@ public:
         cin>>c.pseudo;
         cout<<"Votre mot de passe : "<<endl;
         cin>>c.password;
+        return in;
     }
 };
 

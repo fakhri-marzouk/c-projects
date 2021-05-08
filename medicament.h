@@ -2,10 +2,11 @@
 #include"date.h"
 #include <ostream>
 #include <istream>
+#include<fstream>
 #include <string>
 class medicament {
     protected :
-    int reference ;
+    int refer ;
     string type ; // forme pharcaceutique ;
     string nomCommercial ; 
     float prixVente ; // prixAchat +10% 
@@ -14,11 +15,11 @@ class medicament {
     date date_Creation ;
     date date_Fin ;
     public :
-    int getReference(){ return reference ;} 
+    int getRefer(){ return refer ;} 
     string getNom() { return nomCommercial ;} 
     float getPrix() { return prixAchat ;} 
     string getType(){ return type ;} 
-    void setReference(int r) { reference=r ; } 
+    void setRefer(int r) { refer=r ; } 
     void setPrixAchat(float pa) { prixAchat=pa ;} 
     int getStock(){ return stock; }
     void setNom(string  n ) { nomCommercial=n ;} 
@@ -30,4 +31,25 @@ class medicament {
     void saisirMedicament() ;
     friend ostream& operator<<(ostream&, medicament&) ;
     friend istream& operator>>(istream&,medicament&) ;   // cin et cout  
+};
+#include<vector>
+class stockMed{
+    vector<medicament*> tab ;
+    public :
+    stockMed() ;
+    void remplirStock() ;
+    stockMed(const stockMed& );
+    void ajouterMed(medicament, int=0) ;
+    void supprimerMed_nom(string="") ;
+    void supprimerMed_ref(int=0 ) ;
+    bool chercher_nom(string ) ;
+    bool chercher_ref(int ) ;
+    int taille () {return tab.size();}
+    void afficherStock() ;
+    ~stockMed(void) ;
+    static void creer_fichier(fstream& ) ;
+    static void remplir_fichier(fstream& ) ;
+    static void afficher_fichier(fstream& ) ;
+    friend ostream& operator<<(ostream&, stockMed&) ;
+    friend istream& operator>>(istream&,stockMed&) ; 
 };
