@@ -1,0 +1,15 @@
+
+ réference :6
+ Type : TT
+ nom Commercial:T
+ prix vente: 6.42
+ stock: 6
+ date Creation
+ jour: 6
+ mois : 6
+ anne : 6
+ date expiration
+ jour: 6
+ mois : 6
+ anne : 6
+
