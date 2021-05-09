@@ -22,7 +22,7 @@ class medicament {
     void setRefer(int r) { refer=r ; } 
     void setPrixAchat(float pa) { prixAchat=pa ;} 
     int getStock(){ return stock; }
-    void setNom(string  n ) { nomCommercial=n ;} 
+    void setNom(string n ) { nomCommercial=n ;} 
     void setType(string t){ type =t ; } 
     void setStock(int s){ stock=s ; }
     float calcul_prixVente() ;
@@ -34,22 +34,25 @@ class medicament {
 };
 #include<vector>
 class stockMed{
+    public :
     vector<medicament*> tab ;
     public :
-    stockMed() ;
+     stockMed() ;
     void remplirStock() ;
     stockMed(const stockMed& );
-    void ajouterMed(medicament, int=0) ;
+     void ajouterMed(medicament , int=0) ;
     void supprimerMed_nom(string="") ;
     void supprimerMed_ref(int=0 ) ;
-    bool chercher_nom(string ) ;
-    bool chercher_ref(int ) ;
+    string chercher_nom(string ) ;
+    string chercher_ref(int ) ;
     int taille () {return tab.size();}
     void afficherStock() ;
     ~stockMed(void) ;
     static void creer_fichier(fstream& ) ;
     static void remplir_fichier(fstream& ) ;
     static void afficher_fichier(fstream& ) ;
-    friend ostream& operator<<(ostream&, stockMed&) ;
-    friend istream& operator>>(istream&,stockMed&) ; 
+    friend ostream& operator<<(ostream&, stockMed&) ; //ecrire à l'ecran 
+    friend ostream& operator<<(ostream& ,stockMed *) ; // ecrire dans un fichier 
+    friend istream& operator>>(istream&,stockMed&) ;  // lire du clavier
+    friend istream& operator>>(istream& , stockMed*) ;//lire du fichier 
 };

@@ -7,10 +7,10 @@ class date {
     int mois ;
     int annee ;
     public :
-    date(int=0,int=0 ,int=0 ) ;
+    date(int,int,int ) ;
     void saisirDate() ;
     void afficherDate() ;
-    // ostream& operator<< (ostream&,date& );
+    //ostream& operator<< (ostream&,date& ) ;
     //istream& operator>> (istream&,date& ) ;
     int getJour(){return jour ;}
     int getMois(){return mois ;}
@@ -22,7 +22,7 @@ date :: date (int j,int m , int a )
 {
         jour=j ;
         mois=m ;
-        annee=a ;
+        annee=a;
 }
 void date :: saisirDate()
 {
@@ -35,7 +35,6 @@ void date :: saisirDate()
 }
 void date :: afficherDate()
 {
-    cout<<"affichage date "<<endl ;
     cout<<jour<<"/"<<mois<<"/"<<annee<<endl ;
 }
 ostream& operator<<(ostream& out , date& d)

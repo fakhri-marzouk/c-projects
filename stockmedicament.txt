@@ -1,15 +1,15 @@
 
- réference :6
- Type : TT
- nom Commercial:T
- prix vente: 6.42
- stock: 6
+ réference :3
+ Type : z
+ nom Commercial:z
+ prix vente: 3.21
+ stock: 3
  date Creation
- jour: 6
- mois : 6
- anne : 6
+ jour: 3
+ mois : 3
+ anne : 3
  date expiration
- jour: 6
- mois : 6
- anne : 6
+ jour: 3
+ mois : 3
+ anne : 3
 
