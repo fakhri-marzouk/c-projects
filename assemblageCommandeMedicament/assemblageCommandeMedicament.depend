@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1620580545 source:c:\users\asus\desktop\test c ++\assemblagecommandemedicament\main.cpp
+	<iostream>
+	<vector>
+	<ostream>
+	<istream>
+	<fstream>
+	<string>
+	"bibComMed.h"
+
+1620579310 c:\users\asus\desktop\test c ++\assemblagecommandemedicament\bibcommed.h
+	<vector>
+	<ostream>
+	<istream>
+	<fstream>
+	<string>
+	<iostream>
+
+1620580313 source:c:\users\asus\desktop\test c ++\assemblagecommandemedicament\fonctcommed.cpp
+	<iostream>
+	<vector>
+	<ostream>
+	<istream>
+	<fstream>
+	<string>
+	"bibComMed.h"
+
