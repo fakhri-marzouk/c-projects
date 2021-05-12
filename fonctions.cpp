@@ -20,7 +20,6 @@ void medicament::saisirMedicament()
         cout<<"date de creation:"<<endl ;
         cout<<"donner le jour : "<<endl ;
     do {
-
         cin>>j1 ;
     }
     while(j1<0 || j1>31) ;
@@ -147,13 +146,12 @@ ostream& operator<<(ostream& out , stockMed * sm)
 }
 void stockMed ::creer_fichier(fstream& f)
 {
-    f.open("stockmedicament.txt", ios::in | ios::out | ios::trunc ) ;
+    f.open("stockmedicament.txt", ios::in | ios::out ) ;
     if(! f.is_open()) exit(-1) ;
     cout<<"un fichier est cree"<<endl ;
 }
-void stockMed::remplir_fichier(fstream& f)
+void stockMed::remplir_fichier(fstream& f, stockMed sm)
 {
-        stockMed sm ;   
         f<<sm<<endl ;
 }
 void stockMed::afficher_fichier(fstream& f)
@@ -170,7 +168,7 @@ void stockMed::afficher_fichier(fstream& f)
 }
 stockMed:: stockMed() 
 {
-    string type ;
+   /* string type ;
     int refer ;
     string nomCommercial ;
     float prixAchat ;
@@ -198,8 +196,64 @@ stockMed:: stockMed()
         cin>>j1 ;
         }
         while(j1<0 || j1>31) ;
+        cout<<"donner le mois : "<<endl ;
+        do {
+        cin>>m1; 
+    }while(m1<0 || m1>12) ;   
+    cout<<"donner l'annee : "<<endl ;     
+    cin>>a1 ;
+        cout<<"date expiration : "<<endl ;
+        cout<<"donner le jour : "<<endl ;
+        do {
+
+        cin>>j2 ;
+    }
+    while(j2<0 || j2>31) ;
     cout<<"donner le mois : "<<endl ;
-    do {
+do {
+        cin>>m2; 
+    }while(m2<0 || m2>12) ;  
+    cout<<"donner l'annee : "<<endl ;     
+     cin>>a2 ;
+        med =new medicament(refer,type,nomCommercial,prixAchat, stock,j1,m1,a1,j2,m2,a2);
+        tab.push_back(med) ;
+        cout<<"rajouterrrrrr ? "<<endl ;
+        cin>>rep ;
+    }
+    while(rep=='o'|| rep=='O');*/
+}
+void stockMed::remplirStock()
+{
+    medicament * med ;
+    char rep ;
+    string type ;
+    int refer ;
+    string nomCommercial ;
+    float prixAchat ;
+    int stock ;
+    int j1 ; int j2 ;int m1 ; int m2 ; int a1 ; int a2 ;
+    do 
+    {
+        cout<<"saisir un medicament avec stockMed :"<<endl ;
+        cout<<"donner la reference: "<<endl ;
+        cin>>refer ;
+        cout<<"donner le type de medicament :"<<endl ;
+        cin>>type ;
+        cout<<"donner le nom commercial : "<<endl ;
+        cin>>nomCommercial ;
+        cout<<"donner le prix d'achat"<<endl ;
+        cin>>prixAchat ;
+        cout<<"donner le stock de medicament"<<endl ;
+        cin>>stock ;
+        cout<<"date de creation:"<<endl ;
+        cout<<"donner le jour : "<<endl ;
+        do {
+
+        cin>>j1 ;
+        }
+        while(j1<0 || j1>31) ;
+        cout<<"donner le mois : "<<endl ;
+        do {
         cin>>m1; 
     }while(m1<0 || m1>12) ;   
     cout<<"donner l'annee : "<<endl ;     
@@ -223,19 +277,6 @@ do {
         cin>>rep ;
     }
     while(rep=='o'|| rep=='O');
-}
-void stockMed::remplirStock()
-{
-    medicament * med ;
-    char rep ;
-    do {
-        med=new medicament ;
-        med->saisirMedicament() ;
-        tab.push_back(med) ;
-        cout<<"rajouter ?"<<endl ;
-        cin>>rep ;
-        }
-    while(rep=='0' || rep=='0') ;
 }
 void stockMed::ajouterMed(medicament med, int ind)
 {
@@ -265,21 +306,25 @@ stockMed::~stockMed()
 void stockMed::supprimerMed_ref(int r)
 {
     for(int i=0;i<tab.size();i++)
-        if(tab[i]->getRefer()==r )
-            {     
+    {
+        if(tab[i]->getRefer()==r )  
+            { 
                 delete tab[i] ;
                 tab.erase(tab.begin()+i) ;
                 cout<<"medicament supprime !"<<endl ;
             }
+    }
 }
 void stockMed::supprimerMed_nom(string n)
 {
     for(int i=0;i<tab.size();i++)
     {
         if(tab[i]->getNom()==n)
-        delete tab[i] ;
-        tab.erase(tab.begin()+i) ;
-       cout<<"medicament supprime !"<<endl ;
+            { 
+            delete tab[i] ;
+            tab.erase(tab.begin()+i) ;
+            cout<<"medicament supprime !"<<endl ;
+            }
     }
 }
 string stockMed::chercher_nom(string nom)
@@ -287,12 +332,11 @@ string stockMed::chercher_nom(string nom)
     for(int i=0;i<tab.size();i++) 
         if(tab[i]->getNom()==nom)
             cout<<"le medicament existe encore ! "<<endl ;
-        else cout<<"le medicament n'existe pas ! "<<endl  ;
+    else cout<<"medicament non existant !"<<endl ;
 }
-string stockMed::chercher_ref(int r)
+string stockMed::chercher_ref(int a)
 {
     for(int i=0;i<tab.size();i++)
-        if(tab[i]->getRefer()==r) 
+        if(tab[i]->getRefer()==a) 
             cout<<"le medicament existe encore ! "<<endl ;
-        else cout<<"le medicament n'existe pas ! "<<endl  ; 
 }

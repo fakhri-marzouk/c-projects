@@ -1,15 +1,29 @@
 
- réference :3
- Type : z
- nom Commercial:z
- prix vente: 3.21
- stock: 3
+ réference :4
+ Type : f
+ nom Commercial:f
+ prix vente: 4.28
+ stock: 4
  date Creation
- jour: 3
- mois : 3
- anne : 3
+ jour: 4
+ mois : 4
+ anne : 4
  date expiration
- jour: 3
- mois : 3
- anne : 3
+ jour: 4
+ mois : 4
+ anne : 4
+
+ réference :99
+ Type : j
+ nom Commercial:j
+ prix vente: 8.56
+ stock: 8
+ date Creation
+ jour: 8
+ mois : 8
+ anne : 8
+ date expiration
+ jour: 8
+ mois : 8
+ anne : 8
 

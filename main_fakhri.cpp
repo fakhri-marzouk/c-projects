@@ -8,8 +8,8 @@ using namespace std ;
 int main()
 {
     stockMed sm ;
-     fstream f ;
-     f<<&sm ;
+    fstream f ;
+    f<<&sm ;
     etiquette :
     cout<<"veuillez choisir votre choix : "<<endl ;
     cout<<"1 : ajouter un medicament "<<endl ;
@@ -25,18 +25,20 @@ int main()
     switch (choix)
     {
     case 1 :{
-        
+
+            sm.remplirStock();     
             stockMed::creer_fichier(f) ;
-            stockMed::remplir_fichier(f) ;
+            stockMed::remplir_fichier(f,sm) ;
             goto etiquette ;
     }
         break;
     case 2 :{
             sm.afficherStock() ;
+            //stockMed::afficher_fichier(f) ;
             goto etiquette ;
     }
     case 3 :{
-        cout<<"donner la reference de medicament cherché :"<<endl;
+        cout<<"donner la reference de medicament cherchee:"<<endl;
         int r ;
         cin>>r ;
         string res =sm.chercher_ref(r);
@@ -44,7 +46,7 @@ int main()
          goto etiquette ;
     }
     case 4 :{
-        cout<<"donner la nom de medicament cherché :" <<endl ;
+        cout<<"donner le nom de medicament cherche :" <<endl ;
         char * nom ;
         cin>>nom ;
         string res =sm.chercher_nom(nom) ;
@@ -68,7 +70,6 @@ int main()
     default:
         break;
     }
-    
     f.close() ;
     return 0 ;
 }

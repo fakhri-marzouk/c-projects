@@ -49,7 +49,7 @@ class stockMed{
     void afficherStock() ;
     ~stockMed(void) ;
     static void creer_fichier(fstream& ) ;
-    static void remplir_fichier(fstream& ) ;
+    static void remplir_fichier(fstream&, stockMed ) ;
     static void afficher_fichier(fstream& ) ;
     friend ostream& operator<<(ostream&, stockMed&) ; //ecrire à l'ecran 
     friend ostream& operator<<(ostream& ,stockMed *) ; // ecrire dans un fichier 
