@@ -86,26 +86,34 @@ protected:
     string type;
     string nom;
     string prenom;
-    string type;//checklist?
-    int CIN;
+    string type;
+    unsigned int CIN;
     string adresse;
     string mail;
-    int tel;
-    //file to add
+    unsigned int tel;
+    
 public:
 //constructors
-    personne(){
-        this->pseudo="";
-        this->type="";
-        this->nom="";
-        this->prenom="";
-        this->type="";
-        this->CIN=0;
-        this->adresse="";
-        this->mail="";
-        this->tel=0;
+    // personne(){
+    //     this->pseudo="";
+    //     this->type="";
+    //     this->nom="";
+    //     this->prenom="";
+    //     this->CIN=0;
+    //     this->adresse="";
+    //     this->mail="";
+    //     this->tel=0;
+    // }
+    personne(string Pseudo="",string Type="",string Nom="",string Prenom="",unsigned int Cin=0,string Adresse="",string Mail="",unsigned int Tel=0){
+        this->pseudo=Pseudo;
+        this->type=Type;
+        this->nom=Nom;
+        this->prenom=Prenom;
+        this->CIN=Cin;
+        this->adresse=Adresse;
+        this->mail=Mail;
+        this->tel=Tel;
     }
-    personne(string,string,string,string,string);
 
 //getters
     string getType(){return this->type;}
@@ -127,7 +135,7 @@ public:
     void setTel(int Tel=0){this->tel=Tel;}
 //methods
     bool identifier(compte);
-    void saisir();//cin>>
+    void saisir();
 
 };
 

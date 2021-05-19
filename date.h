@@ -1,13 +1,18 @@
 #include<iostream>
 #include<ostream>
 #include<istream>
+using namespace std ;
 class date {
     public: 
     int jour ;
     int mois ;
     int annee ;
     public :
-    date(int,int,int ) ;
+    date(int j=0,int m=0 , int a=0 ){
+        jour=j ;
+        mois=m ;
+        annee=a;
+}
     void saisirDate() ;
     void afficherDate() ;
     //ostream& operator<< (ostream&,date& ) ;
@@ -18,12 +23,6 @@ class date {
     
 };
 
-date :: date (int j,int m , int a )
-{
-        jour=j ;
-        mois=m ;
-        annee=a;
-}
 void date :: saisirDate()
 {
     cout<<"donner le jour"<<endl ;

@@ -59,27 +59,33 @@ int main(){
                     break;
                 }
                 default:{
+                    p.setType("");
                     cout<<"choix non existant"<<endl;
                     break;
                 }
-            }//fin switch pour choisir type
-            //creation d'une personne
-            cout<<"création d'un compte"<<endl;
-            string Pseudo="";
-            string Password="";
-            do{
-                cin>>Pseudo;
-                c.setPseudo();
-            }while(tabComptes.find(c)!=-1);
-            cin>>Password;
-            c.setPass();
-            tabComptes.ajouter(c);
+            }
+            //fin switch pour choisir type
+            if(p.getType()!=""){
+                //creation d'une personne
+                cout<<"création d'un compte"<<endl;
+                string Pseudo="";
+                string Password="";
+                do{
+                    cout<<"Donnez un pseudo :"<<endl;
+                    cin>>Pseudo;
+                    c.setPseudo();
+                }while(tabComptes.find(c)!=-1);
+                cin>>Password;
+                c.setPass();
+                tabComptes.ajouter(c);
             p.saisir();
-            tabPersonnes.ajouter(p);
-        }
+                tabPersonnes.ajouter(p);
+            }
         default:
             break;
         }
+            }
+            
         if(loggedIn){
             if (p.getType()=="client"){
                 //affichage pour client
@@ -169,4 +175,3 @@ int main(){
     }
     return 0;
 }
-
