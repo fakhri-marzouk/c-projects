@@ -1,7 +1,37 @@
 
+ réference :33
+ Type : vv
+ nom Commercial:vv
+ prix vente: 3.21
+ stock: 3
+ date Creation
+ jour: 3
+ mois : 3
+ anne : 3
+ date expiration
+ jour: 3
+ mois : 3
+ anne : 3
+
+
+ réference :3
+ Type : d
+ nom Commercial:d
+ prix vente: 3.21
+ stock: 3
+ date Creation
+ jour: 3
+ mois : 3
+ anne : 3
+ date expiration
+ jour: 3
+ mois : 3
+ anne : 3
+
+
  réference :4
- Type : f
- nom Commercial:f
+ Type : c
+ nom Commercial:c
  prix vente: 4.28
  stock: 4
  date Creation
@@ -13,17 +43,48 @@
  mois : 4
  anne : 4
 
- réference :99
- Type : j
- nom Commercial:j
- prix vente: 8.56
- stock: 8
+
+ réference :5
+ Type : b
+ nom Commercial:b
+ prix vente: 5.35
+ stock: 5
  date Creation
- jour: 8
- mois : 8
- anne : 8
+ jour: 5
+ mois : 5
+ anne : 5
  date expiration
- jour: 8
- mois : 8
- anne : 8
+ jour: 5
+ mois : 5
+ anne : 5
+
+
+ réference :7
+ Type : x
+ nom Commercial:x
+ prix vente: 4.28
+ stock: 4
+ date Creation
+ jour: 4
+ mois : 4
+ anne : 4
+ date expiration
+ jour: 4
+ mois : 4
+ anne : 4
+
+
+ réference :4
+ Type : s
+ nom Commercial:s
+ prix vente: 4.28
+ stock: 4
+ date Creation
+ jour: 4
+ mois : 4
+ anne : 4
+ date expiration
+ jour: 4
+ mois : 4
+ anne : 4
 

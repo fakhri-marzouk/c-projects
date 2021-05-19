@@ -29,9 +29,7 @@ void date :: afficherDate()
 }
 ostream& operator<<(ostream& out , date& d)
 {
-    out<<"\n jour: "<<d.jour ;
-    out<<"\n mois : "<<d.mois ;
-    out<<"\n anne : "<<d.annee ;
+    out<<d.jour<<"/"<<d.mois<<"/"<<d.annee<<endl ;
 
 }
 istream& operator>>(istream& in , date& d)
