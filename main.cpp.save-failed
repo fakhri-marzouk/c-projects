@@ -1,0 +1,124 @@
+#include <iostream>
+#include<vector>
+#include <ostream>
+#include <istream>
+#include<fstream>
+#include <string>
+#include<stdlib.h>
+#include<conio.h>
+#include"biblastModification.h"
+using namespace std;
+    int main()
+{
+
+    /*achat a ;
+    a.saisirAchat() ;
+    a.afficherAchat() ;*/
+int mn ;
+    //////************************pour le fournisseur *****************************/////
+    do
+    {
+     cout<<" la menu principal est "<< endl;
+
+    fstream fCommande ;
+    commande com ;
+    //medicament med() ;
+    int  rep ;
+    stockCommande sc ;
+    cout<<"indiquez votre choix  :\n "<<endl;
+    cout<<"1)Remplir le stock  \n "<<endl;
+    cout<<"2)Gerer le stock \n"<<endl;
+    cout<<"3)afficher les commandes \n"<< endl;
+
+    cin >>rep ;
+    switch (rep )
+    {
+        //////////----------remplir une commande-------/////////
+    case 1 :
+        {
+            
+            int r ;
+            sc.ajouterStockCommande() ;
+            cout<<"vous voulez calculer le total \n 1)oui \n 2)non :"<< endl ;
+            cin>>r ;
+            if (r==1) { cout<<"le total de vos commandes est "<< sc.calculerTotalStock()<< endl;}
+            else {cout<<"d'accord"<< endl;}
+
+        }
+                 //////////--------gerer le stock ---------///////////
+   case 2 :
+    {   int a ;
+        cout<<"vous voulez : \n1) annuler une commande \n 2)ajouter une commande \n 3)chercher une commande \n "<< endl ;
+        cin>>a ;
+        switch (a)
+        {
+
+        case 1 :
+            {
+            int num ;
+           // stockCommande sc;
+           system("cls");
+            cout<<"donner le num du commande "<< endl;
+            cin>>num ;
+           int b= sc.rechercherCommande(num) ;
+           if (b!=-1 )
+           {
+               sc.supprimerCommande(num) ;
+              cout<<"la commande est supprim�e"<< endl;
+           }
+           else cout<<"la commande n'existe pas"<< endl ;
+            }
+        case 2 :
+            {
+                sc.ajouterStockCommande() ;
+            }
+        case 3 :
+            {
+                int num ;
+                cout<<"donner le num de la commande"<< endl ;
+                cin>>num ;
+                int b=sc.rechercherCommande(num ) ;
+                if( b!=-1)
+                {
+                    cout<<"le commande existe"<< endl;
+                    sc.afficherCommande();
+                }
+                //cout<<"le commande n'existe pas"<< endl;
+            }
+
+        } //default : cout<<"erreur"<< endl;
+    }
+        case 3 :
+            {
+                sc.afficherStockCo() ;
+            }
+            default: break ;
+    }
+
+cout<<"vous voulez retourner au menu principal ?  : \n 1)oui \n 2)non "<< endl ;
+cin >> mn ;
+if (mn==2)
+    }
+        cout<<"Au revoir monsieur !! "<<endl;
+}
+
+    ////////////////// gerant ////////////
+
+   /*  stockCommande scom ;
+     scom.ajouterStockCommande() ;
+     scom.afficherStockCo();
+     int ind=scom.rechercherCommande(2) ;
+     cout<<"l'indice est"<< ind <<endl;
+     scom.supprimerCommande(1) ;
+     scom.afficherStockCo() ;
+     fstream f ;
+     stockMed::creer_fichier(f) ;
+     stockMed::remplir_fichier(f) ;
+     stockMed::afficher_fichier(f) ;
+     f.close() ;
+     return 0 ;*/
+     /*cout << "Hello world!" << endl;
+     return 0; */
+     if (mn==1){system("cls");}
+} while (mn==1) ;
+}

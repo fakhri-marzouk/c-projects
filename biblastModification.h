@@ -1,64 +1,81 @@
-#include<vector> 
-#include"date.h"
+#include<vector>
 #include <ostream>
 #include <istream>
 #include<fstream>
 #include <string>
-class medicament {
+#include<iostream>
+using namespace std;
+
+class date {
+    public:
+    int jour ;
+    int mois ;
+    int annee ;
+    public :
+    date(int=0,int=0 ,int=0 ) ;
+    void saisirDate() ;
+    void afficherDate() ;
+    // ostream& operator<< (ostream&,date& );
+    //istream& operator>> (istream&,date& ) ;
+    int getJour(){return jour ;}
+    int getMois(){return mois ;}
+    int getAnnee(){return annee ;}
+
+};
+
+class medicament
+
+{
     public :
     int refer ;
     string type ; // forme pharcaceutique ;
-    string nomCommercial ; 
-    float prixVente ; // prixAchat +10% 
+    string nomCommercial ;
+    float prixVente ; // prixAchat +10%
     float prixAchat ; //fournisseur
     int stock ;
     date date_Creation ;
     date date_Fin ;
     public :
-    int getRefer(){ return refer ;} 
-    string getNom() { return nomCommercial ;} 
-    float getPrix() { return prixAchat ;} 
-    string getType(){ return type ;} 
-    void setRefer(int r) { refer=r ; } 
-    void setPrixAchat(float pa) { prixAchat=pa ;} 
+    int getRefer(){ return refer ;}
+    string getNom() { return nomCommercial ;}
+    float getPrix() { return prixAchat ;}
+    string getType(){ return type ;}
+    void setRefer(int r) { refer=r ; }
+    void setPrixAchat(float pa) { prixAchat=pa ;}
     int getStock(){ return stock; }
-    void setNom(string n ) { nomCommercial=n ;} 
-    void setType(string t){ type =t ; } 
+    void setNom(string  n ) { nomCommercial=n ;}
+    void setType(string t){ type =t ; }
     void setStock(int s){ stock=s ; }
     float calcul_prixVente() ;
     medicament(int=0 ,string="" ,string="", float=0,int=0,int=0,int=0,int=0,int=0,int=0,int=0) ;
-    void afficherMedicament() ; 
+    void afficherMedicament() ;
     void saisirMedicament() ;
     friend ostream& operator<<(ostream&, medicament&) ;
-    friend istream& operator>>(istream&,medicament&) ;   // cin et cout  
+    friend istream& operator>>(istream&,medicament&) ;   // cin et cout
+    friend class achat;
+    friend float calculAchat() ;
 };
+
 class stockMed{
-    public :
+    public:
     vector<medicament*> tab ;
     public :
-     stockMed() ;
-     ~stockMed(void) ;
     void remplirStock() ;
     stockMed(const stockMed& );
-     void ajouterMed(medicament,int ) ;
+    void ajouterMed(medicament, int=0) ;
     void supprimerMed_nom(string="") ;
     void supprimerMed_ref(int=0 ) ;
-    void chercher_nom(string ) ;
-    void chercher_ref(int ) ;
+    bool chercher_nom(string ) ;
+    bool chercher_ref(int ) ;
     int taille () {return tab.size();}
     void afficherStock() ;
+    ~stockMed(void) ;
     static void creer_fichier(fstream& ) ;
-    static void remplir_fichier(fstream&, stockMed ) ;
+    static void remplir_fichier(fstream& ) ;
     static void afficher_fichier(fstream& ) ;
-    friend ostream& operator<<(ostream&, stockMed&) ; //ecrire à l'ecran 
-    friend ostream& operator<<(ostream& ,stockMed *) ; // ecrire dans un fichier 
-    friend istream& operator>>(istream&,stockMed&) ;  // lire du clavier
-    friend istream& operator>>(istream& , stockMed*) ;//lire du fichier 
-    void chercher_fichier_nom(string nom) ;
-    static void chercher_fichier_ref(fstream& ,medicament ,int) ;
-    void enregistrer() ;
-    void recuperer() ;
-    };
+    friend ostream& operator<<(ostream&, stockMed*) ;
+    friend istream& operator>>(istream&,stockMed&) ;
+};
 class commande :public medicament
 {
 public:
@@ -84,10 +101,8 @@ public :
 
       ~commande(void) ;
      };
-     class stockCommande :public commande , virtual public stockMed
-     {   
-         
-         public:
+     class stockCommande :public commande ,virtual public medicament , virtual public stockMed
+     {
          static int k ;
          vector<commande*> tableStockCom ;
 
@@ -163,7 +178,13 @@ std::vector<medicament*> tabAchat;
          void saisirAchat() ;
          float calculAchat();
          void afficherAchat();
+         //float rechercherPA() ;
+         //void afficheAchat() ;
+//friend std::ostream& operator<<(ostream& , achat & ) ;
+  //       friend  std::istream& operator>>(istream& , achat  & );
          ~achat(void);
 
 
      };
+
+
