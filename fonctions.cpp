@@ -1,9 +1,12 @@
 #include<iostream>
+#include<string>
+#include<sstream>
+#include <stdlib.h>
 using namespace std ;
 #include"medicament.h"
 #include<fstream>
-#include<string>
 #include<vector>
+
 void medicament::saisirMedicament()
 {
         int j1 ;int m2; int j2 ; int a1 ; int a2 ;int m1 ;
@@ -345,11 +348,43 @@ void stockMed::chercher_fichier_nom(string nom)
     }
 }
     
-void stockMed::chercher_fichier_ref(fstream& f,medicament med,int ref)
+void stockMed::chercher_fichier_ref(int ref)
 {
+    char ch[101];
     stockMed sm ;
-    f>>&sm ;
-    sm.chercher_ref(ref) ;
+    ifstream fin;
+    fin.open("stockmedicament.txt");
+    fin.getline(ch,100,'\n');
+    bool existe=0;
+    while(!fin.eof())
+    {
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,':');
+        fin.getline(ch,100,'\n');
+        int b =stoi(ch);
+        if (b==ref)
+        {
+            cout<<"medicament trouve "<<endl;//goto et1 ;
+            existe=1;
+            break;
+        } 
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');   
+    }
+    if (existe==0){
+    cout<<"medicament n'existe pas "<<endl ;
+    }
 }
 void stockMed::enregistrer() // ou bien remplir 
 {
@@ -408,8 +443,7 @@ commande::commande(const commande & c)
 void commande::saisirCommande()//refaire
 {
 
-   // cout<<"donner le num de la commande "<< endl;
-    //generate automatically
+   
     cout<<"donner le nombre de medicaments "<< endl ;
     cin>>nbr ;
     for(int i=0 ;i<nbr ;i++)
@@ -473,25 +507,7 @@ stockCommande::stockCommande()
         k ++ ;
     }
 }
-/*stockCommande::stockCommande(const stockCommande & sc)
-{
 
-    for(int i=0 ;i<sc.tableStockCom.size() ; i++)
-    {
-
-        for (int j=0 ; j<tableCommande.size() ; j++)
-        {
-            /*this->tableStockCom[i].numCommande= sc.this->tableStockCom[i].numCommande ;
-            this->tableStockCom[i].nbr=sc.this->tableStockCom[i].nbr ;
-
-            medicament q=new medicament(*((sc.tableStockCom[i])[j]));
-
-            tableCommande.push_back(q);
-        }
-        commande *p=new commande (*sc.tableStockCom[i]);
-        tableStockCom.push_back(p) ;
-
-}*/
 istream& operator>>(istream& in , stockCommande* sc)
 {
     in.seekg(0) ;
@@ -595,20 +611,8 @@ int stockCommande::rechercherCommande(int b)
     }
     return -1 ;
 }
-/*void stockCommande::supprimerMedicamentStock(string ch )
-{
-    for(int i=0 ; i<tableStockCom.size() ; i++)
-    {
-        for(int j=0 ; j<tableCommande.size() ; j++)
-            if (this->tableStockCom[i]->tableCommande[j]->nomCommercial)==ch ;
-        {
-            //this->tableStockCom[i]->tableCommande[j]->
-            cout<<"le medicamment est supprimé du stock "<<endl;
-        }
-        cout<<"le medicamment n'existe pas dans le stock" <<endl ;
-    }
-}*/
-float stockCommande::calculerTotalStock()
+
+float stockCommande::calculerTotalStock(monnais & ab)
 {
     float s=0.0 ;
 
@@ -616,7 +620,9 @@ float stockCommande::calculerTotalStock()
     {
         s+=this->tableStockCom[i]->calculerTotal() ;
     }
-    return s ;
+    return s ; 
+    ab.montant-=s ;  
+    cout<<"on a fait le retrait de votre argent"<<endl; 
 }
 stockCommande:: ~stockCommande()
 {
@@ -630,21 +636,7 @@ stockCommande:: ~stockCommande()
     }tableStockCom.clear();
 }
 achat::achat()
-{ /*char rep ;
-  do
-  {
-
-       cout<<"donner le nom de la medicamnet"<< endl;
-       cin>>medAchat;
-       /*cout <<"donner la quantité de cette medicament "<< endl;
-       cin>>qte ;
-       medicament* q= new medicament(medAchat);
-       tabAchat.push_back(q);
-       cout<<"\n rajouter "<<endl;
-       cin>>rep ;
-
-  }
-  while(rep=='o'|| rep=='O');*/
+{
 }
 achat::achat(const achat &  A)
 {
@@ -688,8 +680,9 @@ float achat::calculAchat()
        s+=m ;/////////il faut ajouter la fonction recherchePrix
      }
      cout<<" le total de l'achat est "<< s ;
-     monnais m ;
-     s+=m.getMontant();
+     monnais mon ;
+     mon.montant+=s;  
+      cout<<"le prix est ajouté au montant avec succée"<<endl;
 }
 void achat::afficherAchat()
 {
@@ -703,6 +696,74 @@ achat::~achat()
 {
 
 }
+float achat::CalculAchat_fichier(monnais& ab)
+{
+    float res =0 ;
+    int rep ;
+    cout<<"voulez vous faire un achat ? \n 1)oui \n 2)non \n  "<< endl;
+    cin>>rep ;
+    if(rep=1)
+     {
+         int nb ;
+           cout<<"donner le nombre de med que vous voulez achetés"<< endl;
+           cin>> nb ;
+            for(int i=0 ;i<nb ;i++)
+
+        {
+            string nom ;
+            cout<<"doner le nom de medicament :"<<endl ;
+            cin>>nom ;
+            char ch[101];
+        stockMed sm ;
+        ifstream fin;
+        fin.open("stockmedicament.txt");
+        fin.getline(ch,100,'\n');
+        bool existe=0;
+        while(!fin.eof())
+    {
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,':');
+        fin.getline(ch,100,'\n');
+        string b(ch);
+        if (b==nom)
+        {
+            cout<<"medicament trouve "<<endl;//goto et1 ;
+            fin.getline(ch,100,'\n');
+            fin.getline(ch,100,':');
+            fin.getline(ch,100,'\n');
+           // res=std::stof(ch) ;
+            stringstream bb;
+            bb<<ch;
+            bb>>res;
+            existe=1;
+            break;
+        } 
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');
+        fin.getline(ch,100,'\n');   
+    }
+    if (existe==0){
+    cout<<"medicament n'existe pas "<<endl ;
+    }
+
+        }
+}   
+     ab.montant+=res;  
+     cout<<"le prix est ajouté au montant avec succée"<<endl;
+     return res;
+    
+ }
+    
 
 
 /*std::ostream& achat::operator<<(ostream& out , achat  & a)

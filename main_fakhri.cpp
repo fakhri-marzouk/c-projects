@@ -1,16 +1,37 @@
 #include"iostream"
 #include"ostream"
 #include"istream"
+#include<string>
+#include <stdlib.h>
 using namespace std ;
 #include"fonctions.cpp"
 #include<fstream>
-#include<string>
 int main()
-{ 
+{    
+    monnais m;  
+    m.afficherMontant(); 
+
+
+    achat a ; 
+
+    float  res=a.CalculAchat_fichier(m) ;
+    cout<<res<<endl ; 
+    m.afficherMontant() ;
+
+    cout<<m.montant; 
+    stockCommande sc ;  
+    sc.ajouterStockCommande() ; 
+    sc.calculerTotalStock(m);   
+    m.afficherMontant();
+
+    /*stockCommande sc ; 
+    sc.ajouterCommande(); 
+    sc.calculerTotalStock(); 
+    m.afficherMontant(); 
     //////************************pour le fournisseur *****************************/////
     
 
-     cout<<" la menu principal est "<< endl;
+    /* cout<<" la menu principal est "<< endl;
 
     fstream fCommande ;
     commande com ;
@@ -85,9 +106,9 @@ int main()
                 sc.afficherStockCo() ;
             }
             default: break ;
-    }
+    }*/
     
-    /*stockMed sm ;
+   /* stockMed sm ;
     fstream f ;
     etiquette :
     cout<<"veuillez choisir votre choix : "<<endl ;
@@ -156,6 +177,13 @@ int main()
         //sm.recuperer() ;
         sm.chercher_fichier_nom(nom) ;
          goto etiquette ;
+    }
+    case 8:
+    {
+        cout<<"donner la reference de medicament :"<<endl ;
+        int n ;
+        cin>>n ;
+        sm.chercher_fichier_ref(n) ;
     }
     default:
     {
