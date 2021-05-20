@@ -55,7 +55,7 @@ class stockMed{
     friend istream& operator>>(istream&,stockMed&) ;  // lire du clavier
     friend istream& operator>>(istream& , stockMed*) ;//lire du fichier 
     void chercher_fichier_nom(string nom) ;
-    static void chercher_fichier_ref(fstream& ,medicament ,int) ;
+    void chercher_fichier_ref(int) ;
     void enregistrer() ;
     void recuperer() ;
     };
@@ -83,43 +83,14 @@ public :
       static void afficherNumMed();
 
       ~commande(void) ;
-     };
-     class stockCommande :public commande , virtual public stockMed
-     {   
-         
-         public:
-         static int k ;
-         vector<commande*> tableStockCom ;
-
-     public:
-         stockCommande() ;
-         stockCommande(const stockCommande &) ;
-         void afficherStockCo() ;
-         void supprimerCommande(int);// on donne l'indice ici
-         void supprimerMedicamentStock(string) ;
-         void ajouterStockCommande() ;
-         int rechercherCommande(int ) ;
-         friend void afficherCommande();
-        // friend void supprimerMed_nom(string="") ;
-         static void afficherNumCom() ;
-         float calculerTotalStock() ;
-         static void creerFCommande(fstream &) ;
-         static void remplirFStock(fstream& );
-         static void afficherFStock(fstream &);
-         friend ostream& operator<<(ostream& , stockCommande & );
-         friend ostream& operator<<(ostream& , stockCommande *);
-         friend istream& operator>>(istream& , stockCommande* );
-         ~stockCommande();
-
-
-     };
-     class monnais
+     }; 
+     class monnais 
 {
     public :
     float montant;
 
 public:
-    monnais(float Montant=0){
+    monnais(float Montant=1000){
         this->montant=Montant;
     }
     float getMontant(){return this->montant;}
@@ -144,7 +115,12 @@ public:
     friend ostream& operator<<(ostream& out,monnais& m){
         out<<m.montant;
             return out;
-    }
+    } 
+    
+void afficherMontant()
+{
+    cout<<"\n le montant actuel est  ;"<< montant  <<endl;
+}
     friend void saisirAchat() ;
     friend float calculAchat() ;
     friend float calculTotal();
@@ -152,6 +128,38 @@ public:
     friend class stockCommande ;
 
 };
+     
+     class stockCommande :public commande , virtual public stockMed,public monnais 
+     {   
+         
+         public:
+         static int k ;
+         vector<commande*> tableStockCom ;
+
+     public:
+         stockCommande() ;
+         stockCommande(const stockCommande &) ;
+         void afficherStockCo() ;
+         void supprimerCommande(int);// on donne l'indice ici
+         void supprimerMedicamentStock(string) ;
+         void ajouterStockCommande() ;
+         int rechercherCommande(int ) ;
+         friend void afficherCommande();
+        // friend void supprimerMed_nom(string="") ;
+         static void afficherNumCom() ;
+         float calculerTotalStock(monnais& ) ;
+         static void creerFCommande(fstream &) ;
+         static void remplirFStock(fstream& );
+         static void afficherFStock(fstream &);
+         friend ostream& operator<<(ostream& , stockCommande & );
+         friend ostream& operator<<(ostream& , stockCommande *);
+         friend istream& operator>>(istream& , stockCommande* );
+         ~stockCommande();
+
+
+     }; 
+     
+    
      class achat
      {
          medicament medAchat ;
@@ -164,6 +172,8 @@ std::vector<medicament*> tabAchat;
          float calculAchat();
          void afficherAchat();
          ~achat(void);
+         float CalculAchat_fichier(monnais&) ;
 
 
      };
+    
